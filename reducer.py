@@ -1,29 +1,34 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
+import json
 
-current_language = None
-language_count = 0
+# Initialize a dictionary to store the counts
+result_dict = {}
 
-# Read input from standard input
 for line in sys.stdin:
     try:
-        language, count = line.strip().split('\t', 1)
+        key, count = line.strip().split('\t')
         count = int(count)
 
-        if current_language == language:
-            language_count += count
+        # Extract the prefix (e.g., "userToots", "Tag") and the identifier (e.g., "427618", "crypto")
+        prefix, identifier = key.split('_', 1)
+
+        # Create or update the dictionary entry for the prefix
+        if prefix not in result_dict:
+            result_dict[prefix] = {}
+
+        # Add the count to the identifier in the dictionary
+        if identifier in result_dict[prefix]:
+            result_dict[prefix][identifier] += count
         else:
-            if current_language:
-                # Emit language and count
-                print(f"{current_language}\t{language_count}")
-            current_language = language
-            language_count = count
+            result_dict[prefix][identifier] = count
 
-    except ValueError:
-        # Handle input format errors
-        continue
+    except Exception as e:
+        print("Error:", str(e))
 
-# Don't forget to emit the last language
-if current_language:
-    print(f"{current_language}\t{language_count}")
+# Serialize the result_dict to JSON format
+result_json = json.dumps(result_dict, indent=2)
+
+# Print the JSON data
+print(result_json)
