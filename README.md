@@ -1,6 +1,6 @@
 # Scraping and Data Processing with Python
 
-Ce projet comprend des scripts Python pour scraper des données à partir de Mastodon, les traiter, et les stocker dans HBase.
+Ce projet est une collection de scripts Python qui permettent de collecter des données à partir de Mastodon, de les traiter et de les stocker dans HBase. Le projet est divisé en trois scripts principaux : `scrapping.py`, `mapper.py`, et `hbase.py`.
 
 ## Utilisation
 
@@ -24,7 +24,7 @@ Voici comment vous pouvez utiliser ces scripts :
 
 ## Auteurs
 
-- Votre nom
+- Taha SRHAYAR
 
 ## Licence
 
@@ -34,12 +34,6 @@ Ce projet est sous licence MIT.
 
 Les contributions sont les bienvenues. N'hésitez pas à ouvrir une demande de tirage.
 
-# Scraping, Processing, and Storing Data with Python
-
-## Description
-
-Ce projet est une collection de scripts Python qui permettent de collecter des données à partir de Mastodon, de les traiter et de les stocker dans HBase. Le projet est divisé en trois scripts principaux : `scrapping.py`, `mapper.py`, et `hbase.py`.
-
 ## Fonctionnalités
 
 - `scrapping.py`: Ce script utilise la bibliothèque `requests` pour extraire des données à partir de Mastodon, nettoie et formate ces données, puis les stocke dans un système de fichiers distribué HDFS.
@@ -47,16 +41,6 @@ Ce projet est une collection de scripts Python qui permettent de collecter des d
 - `mapper.py`: Ce script prend les données extraites par `scrapping.py`, effectue une analyse et un mappage des informations pertinentes, et génère une sortie structurée pour le stockage.
 
 - `hbase.py`: Ce script connecte le projet à une base de données NoSQL HBase et stocke les données mappées dans des tables spécifiques.
-
-## Prérequis
-
-Avant d'exécuter ces scripts, assurez-vous d'installer les dépendances suivantes :
-
-- `requests`
-- `json`
-- `pandas`
-- `hdfs`
-- `BeautifulSoup`
 
 Vous pouvez les installer à l'aide de `pip` :
 
