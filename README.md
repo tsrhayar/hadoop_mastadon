@@ -46,6 +46,7 @@ Vous pouvez les installer à l'aide de `pip` :
 
 ```bash
 pip install requests json pandas hdfs beautifulsoup4
+```
 
 ## Exemple d'utilisation
 Un exemple d'utilisation complet est fourni dans le script scrapping.py qui extrait des données de Mastodon. Vous pouvez le personnaliser pour votre propre utilisation.
@@ -62,3 +63,4 @@ if __name__ == "__main__":
     hdfs_filename = 'mastodon_data'
 
     toots_data = scrape_mastodon_timeline(URL, params, since, hdfs_url, hdfs_filename)
+```
