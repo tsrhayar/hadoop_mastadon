@@ -1,12 +1,24 @@
 # Scraping and Data Processing with Python
 
-Ce projet est une collection de scripts Python qui permettent de collecter des données à partir de Mastodon, de les traiter et de les stocker dans HBase. Le projet est divisé en trois scripts principaux : `scrapping.py`, `mapper.py`, et `hbase.py`.
+![Python](https://img.shields.io/badge/Python-3.6%2B-blue)
 
-## Utilisation
+## Table of Contents
 
-### Prérequis
+- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Example Usage](#example-usage)
+- [Authors](#authors)
+- [License](#license)
+- [Contributions](#contributions)
+- [Features](#features)
+- [Installation](#installation)
+- [Example Usage](#example-usage)
 
-Assurez-vous d'installer les bibliothèques suivantes avant d'exécuter les scripts :
+## Usage
+
+### Prerequisites
+
+Before running the scripts, ensure you have the following libraries installed:
 
 - requests
 - json
@@ -14,53 +26,37 @@ Assurez-vous d'installer les bibliothèques suivantes avant d'exécuter les scri
 - hdfs
 - BeautifulSoup
 
-### Exemple d'utilisation
+### Example Usage
 
-Voici comment vous pouvez utiliser ces scripts :
+Here's how you can use these scripts:
 
-1. Exécutez `scrapping.py` pour scraper les données de Mastodon et les stocker dans HDFS.
-2. Exécutez `mapper.py` pour traiter les données.
-3. Exécutez `hbase.py` pour stocker les données dans HBase.
+1. Run `scrapping.py` to scrape data from Mastodon and store it in HDFS.
+2. Run `mapper.py` to process the data.
+3. Run `hbase.py` to store the processed data in HBase.
 
-## Auteurs
+## Authors
 
-- Taha SRHAYAR
+- [Taha SRHAYAR](https://github.com/tsrhayar)
 
-## Licence
+## License
 
-Ce projet est sous licence MIT.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contributions
 
-Les contributions sont les bienvenues. N'hésitez pas à ouvrir une demande de tirage.
+Contributions are welcome. Feel free to open a pull request.
 
-## Fonctionnalités
+## Features
 
-- `scrapping.py`: Ce script utilise la bibliothèque `requests` pour extraire des données à partir de Mastodon, nettoie et formate ces données, puis les stocke dans un système de fichiers distribué HDFS.
+- `scrapping.py`: This script uses the `requests` library to extract data from Mastodon, cleans and formats the data, and stores it in a distributed file system HDFS.
 
-- `mapper.py`: Ce script prend les données extraites par `scrapping.py`, effectue une analyse et un mappage des informations pertinentes, et génère une sortie structurée pour le stockage.
+- `mapper.py`: This script takes the data extracted by `scrapping.py`, performs analysis and mapping of relevant information, and generates structured output for storage.
 
-- `hbase.py`: Ce script connecte le projet à une base de données NoSQL HBase et stocke les données mappées dans des tables spécifiques.
+- `hbase.py`: This script connects the project to an HBase NoSQL database and stores the mapped data in specific tables.
 
-Vous pouvez les installer à l'aide de `pip` :
+## Installation
+
+You can install the required libraries using `pip`:
 
 ```bash
 pip install requests json pandas hdfs beautifulsoup4
-```
-
-## Exemple d'utilisation
-Un exemple d'utilisation complet est fourni dans le script scrapping.py qui extrait des données de Mastodon. Vous pouvez le personnaliser pour votre propre utilisation.
-
-```python
-if __name__ == "__main__":
-    URL = 'https://mastodon.social/api/v1/timelines/public'
-    params = {
-        'limit': 40,
-    }
-    since = pd.Timestamp(year=2021, month=5, day=1, tz='utc')
-    
-    hdfs_url = 'http://localhost:9870'
-    hdfs_filename = 'mastodon_data'
-
-    toots_data = scrape_mastodon_timeline(URL, params, since, hdfs_url, hdfs_filename)
-```
